@@ -86,6 +86,25 @@ def MostrarMenu()
     end
 
 
+    #ciclo for 
+    for i in (1..10)
+    puts i
+
+    #el puts imprime el salto de linea
+
+
+
+        #next es el break
+        #para repetir se puede usar redo
+
+        if i == 2
+           # redo 
+        end
+      end
+
+      puts *(1..10) 
+      #esto va a imprimir del i al 10
+
 
     #operador when es similar al switch case
     edad = 2
