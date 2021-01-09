@@ -10,34 +10,77 @@ class EditorTexto
         
         puts ""
         puts "Menú"
-        puts "1- Leer archivo"
-        puts "2- Crear nuevo usuario"
-        puts "3- Salir"
+        puts "1- Nuevo"
+        puts "2- Abrir"
+        puts "3- Escribir archivo existente"
+        puts "4- Salir"
         
         puts "Por favor seleccione una acción"
         
-        
-        opcion = gets()
+        STDOUT.flush
+        opcion = gets.chomp()
         return opcion
     end
 
     def seleccionarAccion(opcion)
 
+        puts opcion
         case opcion
-        when 1 then  
-        when 2 then self.leerArchivo()
+        when "1" 
+        STDOUT.flush
+        puts "Ingrese el texto"
+        data = gets.chomp()
+        nombre = nombrarArchivo()
+        escribirArchivo(data, nombre)
+        when "2" 
+        STDOUT.flush
+        archivo = elegirArchivos()
+        leerArchivo(archivo)
+        else
         end
 
     
     end
     
-    def leerArchivo()
+   private  def escribirArchivo(data, nombre)
         puts "opcion 1"
+
+        File.open(nombre + ".txt", "w") do |f| 
+            puts data           
+            f.write(data)   
+        end
+
+        f.close 
+        gets.chomp()
+
     end
 
+    private  def leerArchivo(archivo)
+        puts "opcion 2"
+        File.foreach(archivo) { |line| puts line }
+        f.close 
 
-    def crearUsuario()
     end
+
+    def nombrarArchivo()
+         
+        puts ""
+        puts "Escriba el nombre del archivo"
+        STDOUT.flush
+        nombreArchivo = gets.chomp()
+        return nombreArchivo
+    end
+
+    def elegirArchivos()
+         
+        puts ""
+        puts "Elija el archivo que desea leer"
+        lista = Dir.glob("*")
+        puts lista
+        nombreArchivo = gets.chomp()
+        return nombreArchivo
+    end
+
 
         
 end
